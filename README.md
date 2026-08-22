@@ -49,6 +49,8 @@ Smoke tests: `python tests/test_sync.py`
 - **Delisted means zero, not deleted.** Dropping a SKU from the local state has to actively zero it out on the vendor side, not just stop mentioning it, otherwise the last known quantity stays live and sellable somewhere it shouldn't be.
 - **Push concurrency is bounded the same way pull concurrency is** in [data-etl-demo](https://github.com/paulocremas-showcase/data-etl-demo): a semaphore, not an unbounded `gather`, because the vendor's rate limit doesn't care which direction the traffic is going.
 
+Full reasoning and the decision this codifies: [ADR-0001](docs/adr/0001-delisted-skus-sync-as-explicit-zero.md).
+
 ## Rules
 
 - `compute_delta` must never include a SKU whose value didn't change.
