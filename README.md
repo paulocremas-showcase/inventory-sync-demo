@@ -21,7 +21,7 @@ The other two repos in this set pull data in. This one pushes it out: take a loc
 ## Flow
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Local inventory state] --> C[sync/sync.py: compute_delta]
     B[Last-synced state] --> C
     C -->|only changed + zeroed-out SKUs| D[vendor_client.py]
